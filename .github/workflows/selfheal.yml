@@ -36,11 +36,11 @@ jobs:
         run: |
           python -m pytest tests/ -v --tb=short --json-report --json-report-file=pytest-results.json 2>&1 && echo "failed=false" >> "$GITHUB_OUTPUT" || echo "failed=true" >> "$GITHUB_OUTPUT"
 
-      - name: SelfHeal - Extract failures
-        if: steps.pytest.outputs.failed == 'true'
+      - name: SelfHeal - Auto repair on failure
+        if: always()
         shell: python
         run: |
-          import json
+          import json, sys, subprocess
           with open("pytest-results.json") as f:
               report = json.load(f)
           failures = []
@@ -53,21 +53,17 @@ jobs:
                       "error_message": longrepr[:500],
                       "traceback": longrepr,
                   })
+          if not failures:
+              print("All tests passed, skipping self-heal")
+              sys.exit(0)
+          print(f"Found {len(failures)} failure(s), running self-heal...")
           with open("failures.json", "w") as f:
               json.dump(failures, f)
-          if not failures:
-              print("No test failures extracted")
-          else:
-              print(f"Found {len(failures)} failure(s)")
-
-      - name: SelfHeal - Analyze and repair
-        if: steps.pytest.outputs.failed == 'true'
-        run: |
-          if [ -s failures.json ]; then
-            python -m selfheal batch --input failures.json --dry-run --config selfheal.yaml 2>&1 || true
-          else
-            echo "No failures to repair"
-          fi
+          subprocess.run(
+              ["python", "-m", "selfheal", "batch", "--input", "failures.json",
+               "--dry-run", "--config", "selfheal.yaml"],
+              check=False,
+          )
 
       - name: Upload selfheal artifacts
         if: always()
