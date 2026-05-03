@@ -1,0 +1,112 @@
+name: SelfHeal - Auto Test Repair
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    name: Run Test Suite
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install selfheal
+        run: pip install git+https://github.com/wiwo-wuming/selfheal.git
+
+      - name: Run tests
+        id: pytest
+        continue-on-error: true
+        run: |
+          python -m pytest tests/ -v --tb=short --json-report --json-report-file=pytest-results.json 2>&1 && echo "failed=false" >> "$GITHUB_OUTPUT" || echo "failed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: pytest-results.json
+          retention-days: 7
+
+    outputs:
+      tests_failed: ${{ steps.pytest.outputs.failed }}
+
+  selfheal:
+    needs: test
+    if: needs.test.outputs.tests_failed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    name: Self-Heal Repair
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install git+https://github.com/wiwo-wuming/selfheal.git
+
+      - name: Download test results
+        uses: actions/download-artifact@v4
+        with:
+          name: test-results
+
+      - name: Extract failures from test report
+        shell: python
+        run: |
+          import json
+          with open("pytest-results.json") as f:
+              report = json.load(f)
+          failures = []
+          for test in report.get("tests", []):
+              if test["outcome"] in ("failed", "error"):
+                  longrepr = test.get("call", {}).get("longrepr", "") or ""
+                  failures.append({
+                      "test_path": test.get("nodeid", ""),
+                      "error_type": "RuntimeError" if "assert" not in longrepr else "AssertionError",
+                      "error_message": longrepr[:500],
+                      "traceback": longrepr,
+                  })
+          with open("failures.json", "w") as f:
+              json.dump(failures, f)
+          if not failures:
+              print("No test failures extracted")
+
+      - name: Run SelfHeal batch repair
+        run: |
+          if [ -s failures.json ]; then
+            python -m selfheal batch --input failures.json --dry-run --config selfheal.yaml 2>&1 || true
+          else
+            echo "No failures to repair"
+          fi
+
+      - name: Upload selfheal artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: selfheal-results
+          path: selfheal-metrics.json
+          retention-days: 7
