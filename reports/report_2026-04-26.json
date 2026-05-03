@@ -1,0 +1,95 @@
+{
+  "date": "2026-04-26",
+  "total_reports": 5,
+  "analyses": [
+    {
+      "reporter": "张三",
+      "sentiment": "positive",
+      "risk_level": "low",
+      "keywords": [
+        "优化",
+        "用户中心",
+        "查询性能"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议量化性能提升的具体指标，如响应时间或吞吐量变化",
+        "可补充后续是否进行压测或上线验证"
+      ],
+      "achievements": [
+        "优化了用户中心查询性能，提升了系统效率"
+      ]
+    },
+    {
+      "reporter": "李四",
+      "sentiment": "neutral",
+      "risk_level": "low",
+      "keywords": [
+        "编写接口文档",
+        "代码评审"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议在日报中补充具体完成的接口数量或评审的代码模块，以便更清晰地展示工作量"
+      ],
+      "achievements": [
+        "完成核心接口文档编写",
+        "参与代码评审"
+      ]
+    },
+    {
+      "reporter": "王五",
+      "sentiment": "positive",
+      "risk_level": "low",
+      "keywords": [
+        "支付模块",
+        "上线"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议监控上线后的运行状态，准备回滚预案"
+      ],
+      "achievements": [
+        "支付模块成功上线"
+      ]
+    },
+    {
+      "reporter": "赵六",
+      "sentiment": "positive",
+      "risk_level": "low",
+      "keywords": [
+        "修复",
+        "活动页",
+        "兼容性"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议补充具体修复的兼容性问题类型（如浏览器、设备或系统版本）以及是否已通过测试验证"
+      ],
+      "achievements": [
+        "修复了活动页的兼容性问题，提升了页面在不同环境下的可用性"
+      ]
+    },
+    {
+      "reporter": "钱七",
+      "sentiment": "neutral",
+      "risk_level": "low",
+      "keywords": [
+        "代码评审",
+        "改进建议",
+        "代码质量",
+        "优化",
+        "评审"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议详细记录评审中发现的具体问题和改进点",
+        "可补充评审涉及的模块或项目名称以增加透明度"
+      ],
+      "achievements": [
+        "完成代码评审工作",
+        "输出改进建议"
+      ]
+    }
+  ]
+}

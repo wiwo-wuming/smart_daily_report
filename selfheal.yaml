@@ -1,0 +1,63 @@
+# SelfHeal Configuration for smart_daily_report
+
+# Engine Behaviour
+engine:
+  max_retries: 3
+  retry_delay: 1.0
+  auto_apply: false
+  backup_dir: .selfheal/backups
+  strategy_fallback: true
+  experience_enabled: true
+  experience_db_path: .selfheal/experience.db
+  max_concurrency: 4
+  async_batch: false
+
+# LLM Provider (DeepSeek)
+llm:
+  provider: deepseek
+  model: deepseek-chat
+  deepseek_api_key: "${DEEPSEEK_API_KEY}"
+  base_url: "https://api.deepseek.com"
+  temperature: 0.1
+
+# Watcher (pytest)
+watcher:
+  type: pytest
+  path: tests/
+  pytest_args: ["-v", "--tb=short"]
+  poll_interval: 5.0
+  watch_patterns: ["*.py"]
+
+# Classifier (hybrid: rule first, LLM fallback)
+classifier:
+  type: hybrid
+  llm:
+    provider: deepseek
+    model: deepseek-chat
+    deepseek_api_key: "${DEEPSEEK_API_KEY}"
+    base_url: "https://api.deepseek.com"
+    temperature: 0.1
+
+# Patcher (template first, LLM fallback via engine.strategy_fallback)
+patcher:
+  type: template
+  templates_dir: patches/
+  llm:
+    provider: deepseek
+    model: deepseek-chat
+    deepseek_api_key: "${DEEPSEEK_API_KEY}"
+    base_url: "https://api.deepseek.com"
+    temperature: 0.2
+
+# Validator (local pytest)
+validator:
+  type: local
+  timeout: 120
+
+# Reporter
+reporter:
+  type: terminal
+
+# Store
+store:
+  type: memory

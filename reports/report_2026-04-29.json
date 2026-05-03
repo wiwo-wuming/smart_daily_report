@@ -1,0 +1,112 @@
+{
+  "date": "2026-04-29",
+  "total_reports": 5,
+  "analyses": [
+    {
+      "reporter": "王五",
+      "date": "2026-04-29",
+      "sentiment": "negative",
+      "risk_level": "high",
+      "keywords": [
+        "支付模块",
+        "联调测试",
+        "回调问题",
+        "严重",
+        "延期风险"
+      ],
+      "risks": [
+        "支付模块联调测试中发现严重回调问题",
+        "存在项目延期风险"
+      ],
+      "suggestions": [
+        "立即组织相关开发人员排查回调问题根因",
+        "评估问题修复时间并同步项目计划，必要时申请资源支持"
+      ],
+      "achievements": []
+    },
+    {
+      "reporter": "张三",
+      "date": "2026-04-29",
+      "sentiment": "neutral",
+      "risk_level": "medium",
+      "keywords": [
+        "用户中心模块开发",
+        "数据同步问题",
+        "方案对齐"
+      ],
+      "risks": [
+        "数据同步问题已识别但尚未解决，需关注后续执行"
+      ],
+      "suggestions": [
+        "明确数据同步问题的具体原因和解决时间节点",
+        "确认方案对齐后的实施计划，避免再次阻塞"
+      ],
+      "achievements": [
+        "完成用户中心模块开发"
+      ]
+    },
+    {
+      "reporter": "李四",
+      "date": "2026-04-29",
+      "sentiment": "positive",
+      "risk_level": "low",
+      "keywords": [
+        "订单模块",
+        "API对接",
+        "修复bug",
+        "线上",
+        "完成"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议记录修复的3个线上bug的具体原因和解决方案，便于后续复盘和知识沉淀"
+      ],
+      "achievements": [
+        "完成订单模块API对接",
+        "修复3个线上bug"
+      ]
+    },
+    {
+      "reporter": "赵六",
+      "date": "2026-04-29",
+      "sentiment": "positive",
+      "risk_level": "low",
+      "keywords": [
+        "完成",
+        "上线",
+        "优化",
+        "首屏时间",
+        "活动页"
+      ],
+      "risks": [],
+      "suggestions": [
+        "可进一步监控线上性能数据，确保优化效果稳定"
+      ],
+      "achievements": [
+        "完成活动页开发并上线",
+        "首屏时间优化至1.2s"
+      ]
+    },
+    {
+      "reporter": "钱七",
+      "date": "2026-04-29",
+      "sentiment": "neutral",
+      "risk_level": "low",
+      "keywords": [
+        "需求评审",
+        "技术方案文档",
+        "PR评审"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议补充具体的技术方案关键决策点",
+        "可记录评审中遇到的争议或待确认事项"
+      ],
+      "achievements": [
+        "完成需求评审",
+        "编写技术方案文档",
+        "评审2个PR"
+      ]
+    }
+  ]
+}

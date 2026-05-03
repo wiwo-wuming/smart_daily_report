@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache
+.selfheal
+*.log
+pytest-results.json
+failures.json
+junit.xml
+junit-postfix.xml

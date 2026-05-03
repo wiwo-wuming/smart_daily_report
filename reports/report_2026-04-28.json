@@ -1,0 +1,102 @@
+{
+  "date": "2026-04-28",
+  "total_reports": 5,
+  "analyses": [
+    {
+      "reporter": "张三",
+      "sentiment": "neutral",
+      "risk_level": "low",
+      "keywords": [
+        "优化",
+        "用户中心",
+        "bug",
+        "解决",
+        "历史遗留"
+      ],
+      "risks": [
+        "历史遗留bug可能涉及复杂逻辑，需关注是否影响用户核心功能"
+      ],
+      "suggestions": [
+        "建议明确具体解决了哪些bug，以及是否已进行充分测试",
+        "建议记录bug根因，避免重复出现"
+      ],
+      "achievements": [
+        "持续优化用户中心，提升系统稳定性"
+      ]
+    },
+    {
+      "reporter": "李四",
+      "sentiment": "positive",
+      "risk_level": "low",
+      "keywords": [
+        "优化",
+        "数据库查询",
+        "QPS提升",
+        "技术评审"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议补充具体的优化措施，以便后续复盘",
+        "可量化QPS提升前后的对比数据，增强成果说服力"
+      ],
+      "achievements": [
+        "数据库查询性能优化，QPS提升40%"
+      ]
+    },
+    {
+      "reporter": "王五",
+      "sentiment": "neutral",
+      "risk_level": "low",
+      "keywords": [
+        "第三方支付",
+        "回调方案",
+        "沟通"
+      ],
+      "risks": [],
+      "suggestions": [
+        "明确回调方案的具体内容与时间节点",
+        "确认与第三方的接口对接细节"
+      ],
+      "achievements": []
+    },
+    {
+      "reporter": "赵六",
+      "sentiment": "neutral",
+      "risk_level": "low",
+      "keywords": [
+        "活动页",
+        "数据埋点",
+        "开发",
+        "数据分析",
+        "看板"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议明确具体完成进度，如是否已上线或进入测试阶段",
+        "可补充埋点指标明细或看板设计细节"
+      ],
+      "achievements": [
+        "完成活动页数据埋点开发",
+        "完成数据分析看板开发"
+      ]
+    },
+    {
+      "reporter": "钱七",
+      "sentiment": "positive",
+      "risk_level": "low",
+      "keywords": [
+        "技术方案文档",
+        "架构设计评审",
+        "完成"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议跟进评审后的修改意见，确保方案落地"
+      ],
+      "achievements": [
+        "完成技术方案文档",
+        "完成架构设计评审"
+      ]
+    }
+  ]
+}

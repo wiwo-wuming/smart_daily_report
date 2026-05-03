@@ -1,0 +1,98 @@
+{
+  "date": "2026-04-25",
+  "total_reports": 5,
+  "analyses": [
+    {
+      "reporter": "李四",
+      "sentiment": "neutral",
+      "risk_level": "medium",
+      "keywords": [
+        "线上问题",
+        "排查",
+        "修复"
+      ],
+      "risks": [
+        "线上问题可能影响用户或系统稳定性，需要确认是否已完全解决"
+      ],
+      "suggestions": [
+        "建议补充问题根因分析、影响范围及后续预防措施"
+      ],
+      "achievements": [
+        "完成线上问题的排查与修复"
+      ]
+    },
+    {
+      "reporter": "张三",
+      "sentiment": "neutral",
+      "risk_level": "low",
+      "keywords": [
+        "需求评审",
+        "技术方案",
+        "编写",
+        "评审",
+        "方案设计"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议明确技术方案的评审进度和下一步执行计划",
+        "可补充需求评审中是否有待解决的关键问题"
+      ],
+      "achievements": [
+        "完成需求评审",
+        "编写技术方案"
+      ]
+    },
+    {
+      "reporter": "王五",
+      "sentiment": "neutral",
+      "risk_level": "low",
+      "keywords": [
+        "日常维护",
+        "需求评审"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议明确日常维护的具体内容和耗时",
+        "建议补充需求评审的结论或待办事项"
+      ],
+      "achievements": []
+    },
+    {
+      "reporter": "赵六",
+      "sentiment": "neutral",
+      "risk_level": "low",
+      "keywords": [
+        "A/B测试",
+        "方案设计",
+        "活动页"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议明确A/B测试的指标和样本量",
+        "建议与产品及设计团队对齐方案细节"
+      ],
+      "achievements": [
+        "完成活动页A/B测试方案设计"
+      ]
+    },
+    {
+      "reporter": "钱七",
+      "sentiment": "neutral",
+      "risk_level": "low",
+      "keywords": [
+        "最佳实践",
+        "文档",
+        "编写",
+        "团队"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议明确文档的适用范围和读者对象",
+        "可考虑组织团队评审以提升文档质量"
+      ],
+      "achievements": [
+        "开始编写团队最佳实践文档"
+      ]
+    }
+  ]
+}

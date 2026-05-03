@@ -1,0 +1,18 @@
+{
+  "date": "2026-04-29-test",
+  "total_reports": 1,
+  "analyses": [
+    {
+      "reporter": "Test",
+      "date": "2026-04-29",
+      "sentiment": "positive",
+      "risk_level": "low",
+      "keywords": [
+        "test"
+      ],
+      "risks": [],
+      "suggestions": [],
+      "achievements": []
+    }
+  ]
+}

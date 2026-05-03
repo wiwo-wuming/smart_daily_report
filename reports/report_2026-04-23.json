@@ -1,0 +1,92 @@
+{
+  "date": "2026-04-23",
+  "total_reports": 5,
+  "analyses": [
+    {
+      "reporter": "张三",
+      "sentiment": "neutral",
+      "risk_level": "low",
+      "keywords": [
+        "线上反馈",
+        "修复",
+        "用户问题"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议补充修复问题的具体类型和影响范围",
+        "建议标注是否已进行回归验证"
+      ],
+      "achievements": [
+        "处理线上用户反馈",
+        "修复2个问题"
+      ]
+    },
+    {
+      "reporter": "李四",
+      "sentiment": "neutral",
+      "risk_level": "low",
+      "keywords": [
+        "架构评审",
+        "会议"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议补充会议的具体结论或后续行动计划",
+        "可说明参与评审的架构方案或决策要点"
+      ],
+      "achievements": [
+        "参加架构评审会议，参与技术决策与方案讨论"
+      ]
+    },
+    {
+      "reporter": "王五",
+      "sentiment": "neutral",
+      "risk_level": "low",
+      "keywords": [
+        "技术分享",
+        "会议",
+        "学习"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议明确技术分享的主题或收获，以便追踪学习成果"
+      ],
+      "achievements": []
+    },
+    {
+      "reporter": "赵六",
+      "sentiment": "neutral",
+      "risk_level": "low",
+      "keywords": [
+        "需求评审",
+        "日常维护"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议补充具体需求评审的结论或待办事项",
+        "日常维护中如涉及系统变更或修复，可注明具体内容"
+      ],
+      "achievements": [
+        "完成需求评审"
+      ]
+    },
+    {
+      "reporter": "钱七",
+      "sentiment": "neutral",
+      "risk_level": "low",
+      "keywords": [
+        "技术方案评审",
+        "代码审查"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议补充评审的具体结论或待办事项",
+        "建议明确代码审查中发现的缺陷或改进点"
+      ],
+      "achievements": [
+        "完成了技术方案评审",
+        "进行了代码审查"
+      ]
+    }
+  ]
+}

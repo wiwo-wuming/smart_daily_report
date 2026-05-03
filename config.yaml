@@ -1,0 +1,64 @@
+agent:
+  model: "deepseek-chat"
+  api_key: "${DEEPSEEK_API_KEY}"
+  base_url: "https://api.deepseek.com"
+  temperature: 0.7
+  max_tokens: 2000
+
+data_sources:
+  feishu:
+    enabled: false
+    app_id: "your-feishu-app-id"
+    app_secret: "your-feishu-app-secret"
+    app_token: "your-bitable-app-token"
+    table_id: "your-bitable-table-id"
+
+  excel:
+    enabled: false
+    path: "./data/daily_reports.csv"
+
+  # 本地JSON数据（测试用）
+  json:
+    enabled: true
+    path: "./data/sample_reports.json"
+
+alerts:
+  enabled: false
+  webhook_url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=your-webhook-key"
+  email:
+    enabled: false
+    smtp_server: "smtp.gmail.com"
+    smtp_port: 587
+    sender: "alerts@example.com"
+    password: "${SMTP_PASSWORD}"
+    recipients:
+      - "manager@example.com"
+  dingtalk:
+    enabled: false
+    webhook_url: "https://oapi.dingtalk.com/robot/send?access_token=xxx"
+
+analysis:
+  risk_keywords:
+    - "阻塞"
+    - "延期"
+    - "故障"
+    - "回滚"
+    - "缺陷"
+    - "严重"
+    - "紧急"
+    - "风险"
+  positive_keywords:
+    - "完成"
+    - "上线"
+    - "突破"
+    - "优化"
+    - "增长"
+    - "成功"
+    - "解决"
+
+dashboard:
+  host: "0.0.0.0"
+  port: 5000
+
+logging:
+  level: "INFO"  # DEBUG / INFO / WARNING / ERROR

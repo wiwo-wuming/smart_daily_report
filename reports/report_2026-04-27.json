@@ -1,0 +1,98 @@
+{
+  "date": "2026-04-27",
+  "total_reports": 5,
+  "analyses": [
+    {
+      "reporter": "钱七",
+      "sentiment": "neutral",
+      "risk_level": "medium",
+      "keywords": [
+        "基础组件库",
+        "升级",
+        "迁移"
+      ],
+      "risks": [
+        "基础组件库升级迁移可能引入兼容性问题或系统不稳定风险"
+      ],
+      "suggestions": [
+        "建议明确升级迁移的具体范围、进度节点和验证计划",
+        "建议提前做好回滚预案和兼容性测试"
+      ],
+      "achievements": [
+        "正在进行基础组件库的升级迁移工作"
+      ]
+    },
+    {
+      "reporter": "张三",
+      "sentiment": "positive",
+      "risk_level": "low",
+      "keywords": [
+        "用户中心模块",
+        "提测",
+        "修复",
+        "测试问题"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议记录修复问题的类型和根因，便于后续复盘"
+      ],
+      "achievements": [
+        "用户中心模块提测",
+        "修复3个测试问题"
+      ]
+    },
+    {
+      "reporter": "李四",
+      "sentiment": "positive",
+      "risk_level": "low",
+      "keywords": [
+        "订单模块",
+        "退款功能",
+        "开发"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议明确功能开发的进度和下一步计划",
+        "可补充是否涉及测试或联调安排"
+      ],
+      "achievements": [
+        "新增退款功能开发"
+      ]
+    },
+    {
+      "reporter": "王五",
+      "sentiment": "positive",
+      "risk_level": "low",
+      "keywords": [
+        "支付模块",
+        "联调",
+        "问题解决"
+      ],
+      "risks": [],
+      "suggestions": [
+        "确认联调结果已通过测试验证",
+        "记录问题原因和解决方案以便后续参考"
+      ],
+      "achievements": [
+        "支付模块重新联调问题已解决"
+      ]
+    },
+    {
+      "reporter": "赵六",
+      "sentiment": "positive",
+      "risk_level": "low",
+      "keywords": [
+        "新增",
+        "活动页面",
+        "开发"
+      ],
+      "risks": [],
+      "suggestions": [
+        "建议补充具体页面功能或涉及的技术细节，便于团队了解工作深度。"
+      ],
+      "achievements": [
+        "新增3个活动页面"
+      ]
+    }
+  ]
+}
