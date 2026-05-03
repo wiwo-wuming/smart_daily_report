@@ -11,49 +11,10 @@ env:
   PYTHON_VERSION: '3.11'
 
 jobs:
-  test:
+  test-and-heal:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
-    name: Run Test Suite
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: 'pip'
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Install selfheal
-        run: pip install git+https://github.com/wiwo-wuming/selfheal.git
-
-      - name: Run tests
-        id: pytest
-        continue-on-error: true
-        run: |
-          python -m pytest tests/ -v --tb=short --json-report --json-report-file=pytest-results.json 2>&1 && echo "failed=false" >> "$GITHUB_OUTPUT" || echo "failed=true" >> "$GITHUB_OUTPUT"
-
-      - name: Upload test report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-results
-          path: pytest-results.json
-          retention-days: 7
-
-    outputs:
-      tests_failed: ${{ steps.pytest.outputs.failed }}
-
-  selfheal:
-    needs: test
-    if: needs.test.outputs.tests_failed == 'true'
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    name: Self-Heal Repair
+    timeout-minutes: 20
+    name: Tests + SelfHeal
 
     steps:
       - uses: actions/checkout@v4
@@ -69,12 +30,14 @@ jobs:
           pip install -r requirements.txt
           pip install git+https://github.com/wiwo-wuming/selfheal.git
 
-      - name: Download test results
-        uses: actions/download-artifact@v4
-        with:
-          name: test-results
+      - name: Run tests
+        id: pytest
+        continue-on-error: true
+        run: |
+          python -m pytest tests/ -v --tb=short --json-report --json-report-file=pytest-results.json 2>&1 && echo "failed=false" >> "$GITHUB_OUTPUT" || echo "failed=true" >> "$GITHUB_OUTPUT"
 
-      - name: Extract failures from test report
+      - name: SelfHeal - Extract failures
+        if: steps.pytest.outputs.failed == 'true'
         shell: python
         run: |
           import json
@@ -94,8 +57,11 @@ jobs:
               json.dump(failures, f)
           if not failures:
               print("No test failures extracted")
+          else:
+              print(f"Found {len(failures)} failure(s)")
 
-      - name: Run SelfHeal batch repair
+      - name: SelfHeal - Analyze and repair
+        if: steps.pytest.outputs.failed == 'true'
         run: |
           if [ -s failures.json ]; then
             python -m selfheal batch --input failures.json --dry-run --config selfheal.yaml 2>&1 || true
@@ -108,5 +74,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: selfheal-results
-          path: selfheal-metrics.json
+          path: |
+            pytest-results.json
+            failures.json
           retention-days: 7
